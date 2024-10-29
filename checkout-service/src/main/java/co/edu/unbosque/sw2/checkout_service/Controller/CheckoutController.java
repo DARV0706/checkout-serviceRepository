@@ -33,7 +33,7 @@ public class CheckoutController {
         CheckoutDTO.setId(UUID.randomUUID().toString());
         CheckoutDTO.setTotal(totalPrice);
         CheckoutDTO.setMetodoPago(List.of("Credit Card", "PayPal", "PSE", "Efecty"));  // Ejemplo
-        //CheckoutDTO.setCheckoutUrl("https://example.com/checkout/" + CheckoutDTO.getId());
+        CheckoutDTO.setUrl("https://EjemplodeUrl.com/checkout/" + CheckoutDTO.getId());
 
         return CheckoutDTO;
     }
