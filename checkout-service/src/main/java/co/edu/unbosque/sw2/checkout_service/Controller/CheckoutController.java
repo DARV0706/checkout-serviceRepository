@@ -32,7 +32,7 @@ public class CheckoutController {
         CheckoutDTO CheckoutDTO = new CheckoutDTO();
         CheckoutDTO.setId(UUID.randomUUID().toString());
         CheckoutDTO.setTotal(totalPrice);
-        CheckoutDTO.setMetodoPago(List.of("Credit Card", "PayPal"));  // Ejemplo
+        CheckoutDTO.setMetodoPago(List.of("Credit Card", "PayPal", "PSE", "Efecty"));  // Ejemplo
         //CheckoutDTO.setCheckoutUrl("https://example.com/checkout/" + CheckoutDTO.getId());
 
         return CheckoutDTO;
