@@ -6,7 +6,15 @@ public class CheckoutDTO {
     private String id;
     private double total;
     private List<String> metodoPago;
-    private String url;
+    private String url, log;
+
+    public String getLog() {
+        return log;
+    }
+
+    public void setLog(String log) {
+        this.log = log;
+    }
 
     public String getUrl() {
         return url;

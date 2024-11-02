@@ -1,6 +1,7 @@
 package co.edu.unbosque.sw2.checkout_service.Feign;
 
 import co.edu.unbosque.sw2.checkout_service.DTO.ProductDTO;
+import co.edu.unbosque.sw2.checkout_service.DTO.ProductoResponseDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,5 @@ import java.util.List;
 @FeignClient(name="products-service")
 public interface ProductoFeign {
     @GetMapping("productos/lista")
-    List<ProductDTO> getProductsById(@RequestParam List<Integer>ids);
-
+    ProductoResponseDTO getProductsById(@RequestParam List<Integer> ids);
 }

@@ -2,6 +2,7 @@ package co.edu.unbosque.sw2.checkout_service.Controller;
 
 import co.edu.unbosque.sw2.checkout_service.DTO.CheckoutDTO;
 import co.edu.unbosque.sw2.checkout_service.DTO.ProductDTO;
+import co.edu.unbosque.sw2.checkout_service.DTO.ProductoResponseDTO;
 import co.edu.unbosque.sw2.checkout_service.Feign.ProductoFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,8 @@ public class CheckoutController {
 
     @GetMapping("/inicio")
     public CheckoutDTO inciarCheckout (@RequestParam List<Integer> ids){
-        List<ProductDTO> products = productoFeign.getProductsById(ids);
+        ProductoResponseDTO respuesta = productoFeign.getProductsById(ids);
+        List<ProductDTO> products = respuesta.getProducts();
 
         // Calcular el precio total a partir de los datos de `products-service`
         double totalPrice = products.stream()
@@ -34,6 +36,7 @@ public class CheckoutController {
         CheckoutDTO.setTotal(totalPrice);
         CheckoutDTO.setMetodoPago(List.of("Credit Card", "PayPal", "PSE", "Efecty"));  // Ejemplo
         CheckoutDTO.setUrl("https://EjemplodeUrl.com/checkout/" + CheckoutDTO.getId());
+        CheckoutDTO.setLog("La respuesta se produjo desde el puerto ".concat(respuesta.getInstanceId()));
 
         return CheckoutDTO;
     }
